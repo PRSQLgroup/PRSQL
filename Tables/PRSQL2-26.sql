@@ -29,13 +29,6 @@ BEGIN
       
         DELETE FROM proj.employees
         WHERE employee_id = p_employee_id
-          AND first_name = p_first_name
-          AND last_name = p_last_name
-          AND job_id = p_job_id
-          AND auto_service_id = p_auto_service_id
-          AND phone_number = p_phone_number
-          AND hire_date = p_hire_date
-          AND salary = p_salary;
         COMMIT;
     END IF;
 EXCEPTION
