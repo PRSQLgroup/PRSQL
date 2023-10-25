@@ -10,7 +10,7 @@ BEGIN
     WHERE employee_id = p_employee_id;
 
     IF l_employee_count = 0 THEN
-        raise_application_error(-20002, 'Значення з параметрів не знайдено');
+        raise_application_error(-20002, 'Р—РЅР°С‡РµРЅРЅСЏ Р· РїР°СЂР°РјРµС‚СЂС–РІ РЅРµ Р·РЅР°Р№РґРµРЅРѕ');
     ELSE
       
 	 
@@ -18,7 +18,4 @@ BEGIN
         WHERE employee_id = p_employee_id;
         COMMIT;
     END IF;
-EXCEPTION
-    WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Помилка: ' || SQLERRM);
 END;
