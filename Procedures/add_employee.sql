@@ -1,5 +1,4 @@
-create or replace procedure add_employee (p_employee_id number,
-                                          p_first_name varchar2,
+create or replace procedure add_employee (p_first_name varchar2,
                                           p_last_name varchar2,
                                           p_job_id number,
                                           p_auto_service_id number,
@@ -18,9 +17,9 @@ begin
     from proj.jobs jb 
     where jb.job_id=p_job_id;
 
-    case when job_count=0 then
+    if job_count=0 then
       raise_application_error (-20002,' Значення з параметру p_job_id не знайдено');
-    end case;
+    end if;
     
 --- Перевірка наявності значення p_auto_service_id в таблиці proj.auto_service   
     select count(*)
@@ -28,9 +27,9 @@ begin
     from proj.auto_service srv 
     where srv.auto_service_id=p_auto_service_id;
 
-    case when service_count=0 then
+    if service_count=0 then
       raise_application_error (-20002,' Значення з параметру p_auto_service_id не знайдено'); 
-    end case;
+    end if;
 
 --- Знаходимо наступне значення employee_id
     select max(mp.employee_id) + 1 into v_next_employee_id from proj.employees mp;
