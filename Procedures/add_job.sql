@@ -8,13 +8,13 @@ BEGIN
     from proj.jobs jb
     where jb.job_title = p_job_title;
     CASE WHEN p_min_salary >  p_max_salary THEN
-      raise_application_error (-20002,'Мінімальна зарплата не повинна перевищувати максимальну зарплату');
+      raise_application_error (-20002,'РњС–РЅС–РјР°Р»СЊРЅР° Р·Р°СЂРїР»Р°С‚Р° РЅРµ РїРѕРІРёРЅРЅР° РїРµСЂРµРІРёС‰СѓРІР°С‚Рё РјР°РєСЃРёРјР°Р»СЊРЅСѓ Р·Р°СЂРїР»Р°С‚Сѓ');
       WHEN p_min_salary < 5000 THEN
-      raise_application_error (-20002,'Pозмір зарплати менший за 5000');
-      WHEN p_max_salary > 9000 THEN
-      raise_application_error (-20002,'Pозмір зарплати більший за  90000');
+      raise_application_error (-20002,'PРѕР·РјС–СЂ Р·Р°СЂРїР»Р°С‚Рё РјРµРЅС€РёР№ Р·Р° 5000');
+      WHEN p_max_salary > 90000 THEN
+      raise_application_error (-20002,'PРѕР·РјС–СЂ Р·Р°СЂРїР»Р°С‚Рё Р±С–Р»СЊС€РёР№ Р·Р°  90000');
       WHEN v_count > 0 THEN
-      raise_application_error (-20002,'Значення з параметру p_job_title вже існує');
+      raise_application_error (-20002,'Р—РЅР°С‡РµРЅРЅСЏ Р· РїР°СЂР°РјРµС‚СЂСѓ p_job_title РІР¶Рµ С–СЃРЅСѓС”');
     ELSE
       INSERT INTO proj.jobs (job_title,min_salary,max_salary) 
       VALUES (p_job_title,p_min_salary,p_max_salary);
