@@ -6,9 +6,6 @@ begin
     from auto_service
     where auto_service_id = p_auto_service_id;
     return v_address;
-exception
-    when no_data_found then
-        return null;
 end; 
 
 
