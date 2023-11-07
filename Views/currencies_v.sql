@@ -6,7 +6,7 @@ select
   gt.cc,
   to_date(gt.exchangedate, 'DD.MM.YYYY') as exchangedate
 from (
-  select sys.get_nbu_currencies(p_date => sysdate-10 ) as json_by_curency
+  select sys.get_nbu_currencies( ) as json_by_curency
   from dual
 ) tt
 cross join json_table (
